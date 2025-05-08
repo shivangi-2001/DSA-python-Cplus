@@ -17,13 +17,13 @@ int main() {
     int *out = nullptr;
     auto it = find(nums.begin(), nums.end(), 8);
 
-    cout << nums.back() << endl;
+    // cout <<  << endl;
 
-//     it = find (myvector.begin(), myvector.end(), 30);
-//   if (it != myvector.end())
-//     std::cout << "Element found in myvector: " << *it << '\n';
-//   else
-//     std::cout << "Element not found in myvector\n";
+    it = find (nums.begin(), nums.end(), 30);
+  if (it != nums.end())
+    std::cout << "Element found in myvector: " << *it << '\n';
+  else
+    std::cout << "Element not found in myvector\n";
 
 
     return 0;
