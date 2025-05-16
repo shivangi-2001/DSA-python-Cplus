@@ -118,19 +118,25 @@ void deleteAtIndex(Node* &head, Node* &tail, int index){
     delete temp;
 }
 
-bool floydCycleDetection(Node* Head){
-    Node* fast = Head;
-    Node* slow = Head;
+Node* floydCycleDetection(Node*& Head, Node*& fast, Node*& slow){
 
     while(fast!=NULL && fast->next!=NULL){
         fast = fast -> next -> next;
         slow = slow -> next;
         if( slow == fast ){
-            return true;
+            return slow;
         }
     }
 
-    return false;
+    return Head;
+}
+
+Node* startingNode(Node*& point, Node*& slow){
+    while(point != slow){
+        slow = slow -> next;
+        point = point -> next;
+    }
+    return slow;
 }
 
 
@@ -143,20 +149,23 @@ int main(){
     // head insertion
     insertionAtHead(head, 5);
     insertionAtHead(head, 20);
+    Node* ll = head;
     insertionAtHead(head, 40);
     insertionAtHead(head, 10);
     insertionAtHead(head, 12);
     print(head);
 
-    tail -> next = head;
+    tail -> next = ll;
 
-    bool ans = floydCycleDetection(head);
+    Node* fast = head;
+    Node* slow = head;
 
-    if(ans){
-        cout << "Cycle present in Linked list" << endl;
-    }else{
-        cout << "Cycle not present in Linked list" << endl;
-    }
+    Node* point = floydCycleDetection(head, fast, slow);
 
+    // slow equal to head
+    slow = head;
+    Node* startNode = startingNode(point, slow);
+
+    cout << startNode -> data << endl;
     return 0;
 }
