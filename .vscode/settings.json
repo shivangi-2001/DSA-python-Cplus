@@ -6,7 +6,8 @@
         "vector": "cpp",
         "iostream": "cpp",
         "stack": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "queue": "cpp"
     },
     "github.copilot.enable": {
         "*": false,
